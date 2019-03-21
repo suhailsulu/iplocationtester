@@ -18,21 +18,66 @@
             method: "GET",
             url: "https://api.userinfo.io/userinfos",
             success: function (data) {
+                console.log(data);
+                if (data && data.country) {
+                    if (data.country.code == "CN") {
+                        //load google map china
+                        loadChinaMap();
+                    } else if (data.country.code == null) {
+                        $.ajax({
+                            method: "GET",
+                            url: "https://extreme-ip-lookup.com/json/",
+                            success: function (data) {
+                                consle.log(data);
+                                if (data && data.countryCode) {
+                                    if (data.countryCode == "CN") {
+                                        loadChinaMap()
+                                    } else {
+                                        loadGlobalMap();
+                                    }
+                                } else {
+                                    loadGlobalMap();
+                                }
+                            },
+                            error: function () {
 
+                            }
+                        });
+                    } else {
+                        //load googlemap global
+                    }
+                } else {
+
+                }
             },
             error: function () {
                 $.ajax({
                     method: "GET",
                     url: "https://extreme-ip-lookup.com/json/",
                     success: function (data) {
-
+                        consle.log(data);
+                        if (data && data.countryCode) {
+                            if (data.countryCode == "CN") {
+                                loadChinaMap()
+                            } else {
+                                loadGlobalMap();
+                            }
+                        } else {
+                            loadGlobalMap();
+                        }
                     },
                     error: function () {
 
                     }
-                })
+                });
             }
         })
+        function loadChinaMap() {
+
+        }
+        function loadGlobalMap() {
+
+        }
     </script>
 </body>
 
