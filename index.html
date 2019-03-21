@@ -15,7 +15,23 @@
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script>
         $.ajax({
+            method: "GET",
+            url: "https://api.userinfo.io/userinfos",
+            success: function (data) {
 
+            },
+            error: function () {
+                $.ajax({
+                    method: "GET",
+                    url: "https://extreme-ip-lookup.com/json/",
+                    success: function (data) {
+
+                    },
+                    error: function () {
+
+                    }
+                })
+            }
         })
     </script>
 </body>
