@@ -73,10 +73,30 @@
             }
         })
         function loadChinaMap() {
+            $.ajax({
+                url: "https://maps.google.cn/maps/api/js?key=AIzaSyBuhMiZKSVg7aBTkiHE1LA2Ty6huPoiRxk&libraries=places",
+                dataType: "script",
+                timeout: 5000,
+                success: function () {
+                    console.log("loaded chinese")
+                },
+                error: function (a, b, c) {
 
+                }
+            })
         }
         function loadGlobalMap() {
+            $.ajax({
+                url: "https://maps.googleapis.com/maps/api/js?key=AIzaSyBuhMiZKSVg7aBTkiHE1LA2Ty6huPoiRxk&libraries=places",
+                dataType: "script",
+                timeout: 5000,
+                success: function () {
+                    console.log("loaded chinese")
+                },
+                error: function (a, b, c) {
 
+                }
+            })
         }
     </script>
 </body>
